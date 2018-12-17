@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHandler;
     private static boolean isAppStarted = false;//程序运行标记
 
+    
 
 
     //    权限列表
