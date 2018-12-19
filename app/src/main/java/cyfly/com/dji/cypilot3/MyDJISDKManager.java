@@ -29,6 +29,14 @@ public class MyDJISDKManager {
     }
 
 
-
+    //开始连接SDK和DJI设备，这个方法应该在成功注册APP后被调用，
+    // 之后在手机设备和DJI产品之间会有一个数据连接
+    // 这个数据连接可以是USB连接、WIFI连接或者蓝牙。
+    // 如果连接成功，会调用 onProductConnect 回调函数
+    // 返回 true 如果连接建立成功，
+    // 如果是用蓝牙连接手机和DJI产品，getBluetoothProductConnector应该被用来获取蓝牙链接，并可以处理蓝牙设备的连接。
+    boolean startConnectionToProduct(){
+        return DJISDKManager.getInstance().startConnectionToProduct();
+    }
 
 }
