@@ -39,4 +39,12 @@ public class MyDJISDKManager {
         return DJISDKManager.getInstance().startConnectionToProduct();
     }
 
+
+    //断开和DJI产品的连接
+    void stopConnectionToProduct(){
+        DJISDKManager.getInstance().stopConnectionToProduct();
+    }
+
+
+
 }
