@@ -23,5 +23,12 @@ public class MyDJISDKManager {
 
 
 
+    //设置蓝牙是否是唯一连接
+    void setSupportOnlyForBluetoothDevice(boolean isBluetoothDevice){
+        DJISDKManager.getInstance().setSupportOnlyForBluetoothDevice(isBluetoothDevice);
+    }
+
+
+
 
 }
