@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        isAppStarted = true;
+        isAppStarted = true;//APP已经启动
 
         // When the compile and target version is higher than 22, please request the following permission at runtime to ensure the SDK works well.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //打印SDK版本号
         Log.e("cypilot","SDK Version :"+DJISDKManager.getInstance().getSDKVersion().toString());
     }
 
@@ -345,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     showToast("registering, pls wait...");
+                    //注册DJI APP
                     DJISDKManager.getInstance().registerApp(MainActivity.this.getApplicationContext(), new DJISDKManager.SDKManagerCallback() {
                         @Override
                         public void onRegister(DJIError djiError) {
