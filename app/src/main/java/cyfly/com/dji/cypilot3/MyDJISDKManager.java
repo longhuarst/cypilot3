@@ -55,4 +55,26 @@ public class MyDJISDKManager {
 
 
 
+
+
+    //===========Debug and Logging=====================
+    //===========调试和日志==============================
+
+
+    //使用调试IP进入调试模式
+    void enableBridgeModeWithBridgeAppIP(String bridgeAppIP){
+        DJISDKManager.getInstance().enableBridgeModeWithBridgeAppIP(bridgeAppIP);
+    }
+
+    //获取日志路径
+    String getLogPath(){
+        return DJISDKManager.getInstance().getLogPath();
+    }
+
+
+
+
+
+
+
 }

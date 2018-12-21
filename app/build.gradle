@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -59,3 +60,4 @@ dependencies {
     compile ('com.dji:dji-uxsdk:4.8.1')
     provided ('com.dji:dji-sdk-provided:4.8.1')
 }
+
