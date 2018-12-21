@@ -1,6 +1,7 @@
 package cyfly.com.dji.cypilot3;
 
 import dji.sdk.base.BaseProduct;
+import dji.sdk.flightcontroller.FlyZoneManager;
 import dji.sdk.sdkmanager.BluetoothProductConnector;
 import dji.sdk.sdkmanager.DJISDKManager;
 
@@ -73,6 +74,14 @@ public class MyDJISDKManager {
 
 
 
+
+
+    //============Managers==============================
+    //============管理===================================
+
+    FlyZoneManager getFlyZoneManager(){
+        return DJISDKManager.getInstance().getFlyZoneManager();
+    }
 
 
 
