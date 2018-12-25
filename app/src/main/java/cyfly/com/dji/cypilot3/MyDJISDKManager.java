@@ -1,5 +1,6 @@
 package cyfly.com.dji.cypilot3;
 
+import dji.keysdk.KeyManager;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.FlyZoneManager;
 import dji.sdk.sdkmanager.BluetoothProductConnector;
@@ -81,6 +82,13 @@ public class MyDJISDKManager {
 
     FlyZoneManager getFlyZoneManager(){
         return DJISDKManager.getInstance().getFlyZoneManager();
+    }
+
+
+
+    //提供访问SDK key的接口
+    KeyManager getKeyManager(){
+        return DJISDKManager.getInstance().getKeyManager();
     }
 
 
