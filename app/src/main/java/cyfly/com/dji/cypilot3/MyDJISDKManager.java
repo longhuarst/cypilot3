@@ -3,6 +3,7 @@ package cyfly.com.dji.cypilot3;
 import dji.keysdk.KeyManager;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.FlyZoneManager;
+import dji.sdk.mission.MissionControl;
 import dji.sdk.sdkmanager.BluetoothProductConnector;
 import dji.sdk.sdkmanager.DJISDKManager;
 
@@ -90,6 +91,14 @@ public class MyDJISDKManager {
     KeyManager getKeyManager(){
         return DJISDKManager.getInstance().getKeyManager();
     }
+
+
+    //提供访问MissionControl，用于管理任务
+    MissionControl getMissionControl(){
+        return DJISDKManager.getInstance().getMissionControl();
+    }
+
+
 
 
 
