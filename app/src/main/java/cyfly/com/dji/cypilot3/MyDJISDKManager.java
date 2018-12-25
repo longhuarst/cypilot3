@@ -7,6 +7,7 @@ import dji.sdk.flighthub.FlightHubManager;
 import dji.sdk.mission.MissionControl;
 import dji.sdk.sdkmanager.BluetoothProductConnector;
 import dji.sdk.sdkmanager.DJISDKManager;
+import dji.sdk.sdkmanager.LDMManager;
 
 public class MyDJISDKManager {
 
@@ -107,6 +108,17 @@ public class MyDJISDKManager {
     }
 
 
+
+
+    //===============LDM =============================
+    //===============本地数据模式 =============================
+
+
+    //管理本地数据模式功能，本地数据模式提供开发者们选项去将SDK进入飞机模式，
+    //限制其访问英特网，
+    LDMManager getLDMManager(){
+        return DJISDKManager.getInstance().getLDMManager();
+    }
 
 
 }
