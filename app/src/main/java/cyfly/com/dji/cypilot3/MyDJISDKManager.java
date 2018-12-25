@@ -3,6 +3,7 @@ package cyfly.com.dji.cypilot3;
 import dji.keysdk.KeyManager;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.FlyZoneManager;
+import dji.sdk.flighthub.FlightHubManager;
 import dji.sdk.mission.MissionControl;
 import dji.sdk.sdkmanager.BluetoothProductConnector;
 import dji.sdk.sdkmanager.DJISDKManager;
@@ -99,6 +100,11 @@ public class MyDJISDKManager {
     }
 
 
+
+    //提供访问FlightHubManager,这可以与DJI FlightHub 相互作用
+    FlightHubManager getFlightHubManager(){
+        return DJISDKManager.getInstance().getFlightHubManager();
+    }
 
 
 
