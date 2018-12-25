@@ -18,6 +18,10 @@ public class MyBaseProduct {
     }
 
 
+    //获取产品的固件包版本
+    String getFirmwarePackageVersion(){
+        return DJISDKManager.getInstance().getProduct().getFirmwarePackageVersion();
+    }
 
 
 
