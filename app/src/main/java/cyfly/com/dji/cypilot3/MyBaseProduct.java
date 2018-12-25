@@ -1,5 +1,9 @@
 package cyfly.com.dji.cypilot3;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import dji.common.util.CommonCallbacks;
 import dji.sdk.base.DJIDiagnostics;
 import dji.sdk.sdkmanager.DJISDKManager;
 
@@ -24,6 +28,11 @@ public class MyBaseProduct {
     }
 
 
+
+    //检索产品的model
+    void setName(@NonNull String name, @Nullable final CommonCallbacks.CompletionCallback callback){
+        DJISDKManager.getInstance().getProduct().setName(name,callback);
+    }
 
 
 
