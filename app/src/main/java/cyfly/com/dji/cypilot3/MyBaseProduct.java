@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import dji.common.product.Model;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.DJIDiagnostics;
+import dji.sdk.camera.Camera;
 import dji.sdk.sdkmanager.DJISDKManager;
 
 public class MyBaseProduct {
@@ -54,4 +55,17 @@ public class MyBaseProduct {
     boolean isConnected(){
         return DJISDKManager.getInstance().getProduct().isConnected();
     }
+
+
+    //Retrieves an instance of the device's camera.
+    //检索一个设备相机的实例
+    Camera getCamera(){
+        return DJISDKManager.getInstance().getProduct().getCamera();
+    }
+
+
+
+
+
 }
+
