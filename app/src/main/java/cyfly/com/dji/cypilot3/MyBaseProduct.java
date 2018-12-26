@@ -47,4 +47,11 @@ public class MyBaseProduct {
         return DJISDKManager.getInstance().getProduct().getModel();
     }
 
+
+
+    //true if the device is connected.
+    //如果设备已经链接则返回真
+    boolean isConnected(){
+        return DJISDKManager.getInstance().getProduct().isConnected();
+    }
 }
