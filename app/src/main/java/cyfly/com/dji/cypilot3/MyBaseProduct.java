@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import dji.common.product.Model;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.DJIDiagnostics;
+import dji.sdk.battery.Battery;
 import dji.sdk.camera.Camera;
 import dji.sdk.sdkmanager.DJISDKManager;
 
@@ -64,7 +65,11 @@ public class MyBaseProduct {
     }
 
 
-
+    //Retrieves an instance of the product's smart battery. When using products with multiple batteries, such as the M600 or Inspire 2, use getBatteries, as this method will only return a single battery.
+    //检索一个产品的智能电池的实例
+    Battery getBattery(){
+        return DJISDKManager.getInstance().getProduct().getBattery();
+    }
 
 
 }
