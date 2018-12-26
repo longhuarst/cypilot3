@@ -3,6 +3,8 @@ package cyfly.com.dji.cypilot3;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import dji.common.product.Model;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.DJIDiagnostics;
@@ -70,6 +72,14 @@ public class MyBaseProduct {
     Battery getBattery(){
         return DJISDKManager.getInstance().getProduct().getBattery();
     }
+
+
+    //Returns an array of aircraft's batteries. It is used when the aircraft has multiple batteries, e.g. Matrice 600.
+    //返回一个飞机电池的列表
+    synchronized List<Battery> getBatteries(){
+        return DJISDKManager.getInstance().getProduct().getBatteries();
+    }
+
 
 
 }
