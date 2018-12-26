@@ -35,6 +35,11 @@ public class MyBaseProduct {
     }
 
 
+    //检索产品的model
+    void getName(final CommonCallbacks.CompletionCallbackWith<String> callback){
+        DJISDKManager.getInstance().getProduct().getName(callback);
+    }
+
 
 
 
