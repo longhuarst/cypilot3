@@ -7,6 +7,7 @@ import java.util.List;
 
 import dji.common.product.Model;
 import dji.common.util.CommonCallbacks;
+import dji.sdk.accessory.AccessoryAggregation;
 import dji.sdk.airlink.AirLink;
 import dji.sdk.base.DJIDiagnostics;
 import dji.sdk.battery.Battery;
@@ -94,6 +95,13 @@ public class MyBaseProduct {
     //检索一个AirLink的设备实例
     AirLink getAirLink(){
         return DJISDKManager.getInstance().getProduct().getAirLink();
+    }
+
+
+
+    @Nullable
+    AccessoryAggregation getAccessoryAggregation(){
+        return DJISDKManager.getInstance().getProduct().getAccessoryAggregation();
     }
 
 
