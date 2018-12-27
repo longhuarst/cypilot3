@@ -1,4 +1,4 @@
-package cyfly.com.dji.cypilot3;
+package cyfly.com.dji.cypilot3.MyAPI;
 
 import dji.keysdk.KeyManager;
 import dji.sdk.base.BaseProduct;

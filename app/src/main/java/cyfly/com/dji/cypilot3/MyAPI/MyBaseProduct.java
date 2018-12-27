@@ -1,4 +1,4 @@
-package cyfly.com.dji.cypilot3;
+package cyfly.com.dji.cypilot3.MyAPI;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
