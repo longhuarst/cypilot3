@@ -7,9 +7,11 @@ import java.util.List;
 
 import dji.common.product.Model;
 import dji.common.util.CommonCallbacks;
+import dji.sdk.airlink.AirLink;
 import dji.sdk.base.DJIDiagnostics;
 import dji.sdk.battery.Battery;
 import dji.sdk.camera.Camera;
+import dji.sdk.gimbal.Gimbal;
 import dji.sdk.sdkmanager.DJISDKManager;
 
 public class MyBaseProduct {
@@ -79,6 +81,25 @@ public class MyBaseProduct {
     synchronized List<Battery> getBatteries(){
         return DJISDKManager.getInstance().getProduct().getBatteries();
     }
+
+
+
+    //检索一个设备的平衡环
+    Gimbal getGimbal(){
+        return DJISDKManager.getInstance().getProduct().getGimbal();
+    }
+
+
+
+    //检索一个AirLink的设备实例
+    AirLink getAirLink(){
+        return DJISDKManager.getInstance().getProduct().getAirLink();
+    }
+
+
+
+
+
 
 
 
