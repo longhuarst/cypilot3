@@ -1,7 +1,10 @@
 package cyfly.com.dji.cypilot3;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -148,6 +151,13 @@ public class MainActivity extends AppCompatActivity {
 
         //打印SDK版本号
         Log.e("cypilot","SDK Version :"+DJISDKManager.getInstance().getSDKVersion().toString());
+
+
+
+
+        //断线重连
+//        IntentFilter i = new IntentFilter();
+//        i.addAction(MApplication.FLAG);
     }
 
     private void resizeFPVWidget(int width, int height, int margin, int fpvInsertPosition) {
@@ -440,6 +450,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+    //断线重连
+
+//    protected BroadcastReceiver receiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//
+//        }
+//    };
 
 
 
