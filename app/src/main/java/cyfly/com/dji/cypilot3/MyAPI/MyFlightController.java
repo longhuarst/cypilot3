@@ -52,6 +52,7 @@ public class MyFlightController {
 
 
 
+    //飞行控制器 状态 回调函数
     FlightControllerState.Callback FlightControllerStateCallback = new FlightControllerState.Callback(){
 
         @Override
@@ -62,6 +63,7 @@ public class MyFlightController {
 
 
 
+    //飞行控制器 惯性测量单元 回调函数
     IMUState.Callback IMUStateCallback = new IMUState.Callback(){
 
         @Override
