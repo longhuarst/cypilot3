@@ -39,12 +39,7 @@ public class MyFlightController {
         if (controller == null)
             return null;
 
-        controller.setStateCallback(new FlightControllerState.Callback() {
-            @Override
-            public void onUpdate(@NonNull FlightControllerState flightControllerState) {
-
-            }
-        });
+        controller.setStateCallback(FlightControllerStateCallback);
 
         controller.setIMUStateCallback(IMUStateCallback);
 
@@ -57,7 +52,13 @@ public class MyFlightController {
 
 
 
+    FlightControllerState.Callback FlightControllerStateCallback = new FlightControllerState.Callback(){
 
+        @Override
+        public void onUpdate(@NonNull FlightControllerState flightControllerState) {
+
+        }
+    };
 
 
 
