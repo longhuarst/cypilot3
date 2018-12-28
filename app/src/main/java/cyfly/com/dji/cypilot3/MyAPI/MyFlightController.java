@@ -87,4 +87,14 @@ public class MyFlightController {
     };
 
 
+    //Sets the callback function that updates the data received from an external device (e.g. the onboard device).
+    //拓展设备的更新数据
+    FlightController.OnboardSDKDeviceDataCallback OnboardSDKDeviceDataCallback = new FlightController.OnboardSDKDeviceDataCallback() {
+        @Override
+        public void onReceive(byte[] bytes) {
+
+        }
+    };
+
+
 }
