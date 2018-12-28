@@ -13,6 +13,7 @@ import dji.sdk.flightcontroller.Compass;
 import dji.sdk.flightcontroller.FlightController;
 import dji.sdk.flightcontroller.LandingGear;
 import dji.sdk.flightcontroller.RTK;
+import dji.sdk.flightcontroller.Simulator;
 import dji.sdk.products.Aircraft;
 import dji.sdk.sdkmanager.DJISDKManager;
 
@@ -212,7 +213,14 @@ public class MyFlightController {
     }
 
 
+    //Simulator object.
+    //仿真对象
+    Simulator getSimulator(){
+        if (controller == null)
+            return null;
 
+        return controller.getSimulator();
+    }
 
 
 }
