@@ -3,6 +3,7 @@ package cyfly.com.dji.cypilot3.MyAPI;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.Size;
 
 import dji.common.flightcontroller.FlightControllerState;
 import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
@@ -229,5 +230,16 @@ public class MyFlightController {
         if (controller == null)
             return false;
         return controller.isOnboardSDKDeviceAvailable();
+    }
+
+
+
+    //If there is a device connected to the aircraft using the Onboard SDK, this method will send data to that device. The size of the data cannot be greater than 100 bytes, and will be sent in 40 byte increments every 14ms. This method is only supported on products that support the Onboard SDK (Matrice 100, Matrice 600, Matrice 600 Pro, A3, A3 Pro, and N3).
+    //发送数据给OnBoardSDK设备
+    void sendDataToOnboardSDKDevice(@Size(min = 1, max = 100) byte[] data,
+                                    @Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null)
+            return ;
+        controller.sendDataToOnboardSDKDevice(data,callback);
     }
 }
