@@ -1,6 +1,7 @@
 package cyfly.com.dji.cypilot3.MyAPI;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import dji.common.flightcontroller.FlightControllerState;
 import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
@@ -8,6 +9,7 @@ import dji.common.flightcontroller.imu.IMUState;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.Compass;
 import dji.sdk.flightcontroller.FlightController;
+import dji.sdk.flightcontroller.RTK;
 import dji.sdk.products.Aircraft;
 import dji.sdk.sdkmanager.DJISDKManager;
 
@@ -125,6 +127,31 @@ public class MyFlightController {
 
         return controller.getCompass();
     }
+
+
+    //Number of Compass modules in the flight controller.
+    //获取飞行控制器上的电子罗盘的个数
+    int getCompassCount(){
+        if (controller == null)
+            return 0;
+
+        return controller.getCompassCount();
+    }
+
+
+
+    //RTK positioning object.
+    // RTK 定位对象
+    @Nullable
+    RTK getRTK(){
+        if (controller == null)
+            return null;
+
+        return controller.getRTK();
+    }
+
+
+
 
 
 }
