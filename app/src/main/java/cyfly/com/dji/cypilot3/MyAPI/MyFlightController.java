@@ -6,6 +6,7 @@ import dji.common.flightcontroller.FlightControllerState;
 import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
 import dji.common.flightcontroller.imu.IMUState;
 import dji.sdk.base.BaseProduct;
+import dji.sdk.flightcontroller.Compass;
 import dji.sdk.flightcontroller.FlightController;
 import dji.sdk.products.Aircraft;
 import dji.sdk.sdkmanager.DJISDKManager;
@@ -29,13 +30,13 @@ public class MyFlightController {
 
 
 
-
-
+    BaseProduct product = null;
+    FlightController controller = null;
 
     FlightController getFlightController(){
-        BaseProduct product = DJISDKManager.getInstance().getProduct();
+        product = DJISDKManager.getInstance().getProduct();
 
-        FlightController controller = ((Aircraft)product).getFlightController();
+        controller = ((Aircraft)product).getFlightController();
 
         if (controller == null)
             return null;
@@ -45,6 +46,7 @@ public class MyFlightController {
         controller.setIMUStateCallback(IMUStateCallback);
 
         controller.setASBInformationCallback(AirSenseSystemInformationCallback);
+
 
         return controller;
     }
@@ -95,6 +97,34 @@ public class MyFlightController {
 
         }
     };
+
+
+
+    //=================To Determine==================================
+    //=================To Determine==================================
+
+    //Returns the current state of flight controller.
+    //返回当前飞行控制器的状态
+    FlightControllerState getState(){
+        if (controller == null)
+            return null;
+        return controller.getState();
+    }
+
+
+
+
+    //==============Sensors===========================================
+    //==============传感器===========================================
+
+    //Compass object.
+    //获取电子罗盘
+    Compass getCompass(){
+        if (controller == null)
+            return null;
+
+        return controller.getCompass();
+    }
 
 
 }
