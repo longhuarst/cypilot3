@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import dji.common.flightcontroller.FlightControllerState;
 import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
 import dji.common.flightcontroller.imu.IMUState;
+import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.Compass;
 import dji.sdk.flightcontroller.FlightController;
@@ -149,6 +150,18 @@ public class MyFlightController {
 
         return controller.getRTK();
     }
+
+
+    //Number of IMU modules in the flight controller. Most products have one IMU.
+    //返回飞行控制器上的惯性测量单位的个数，大多数的产品有一个惯性测量单元
+    int getIMUCount(){
+        if (controller == null){
+            return 0;
+        }
+
+        return controller.getIMUCount();
+    }
+
 
 
 
