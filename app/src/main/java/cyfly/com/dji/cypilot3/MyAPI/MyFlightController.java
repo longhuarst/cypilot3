@@ -11,6 +11,7 @@ import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.Compass;
 import dji.sdk.flightcontroller.FlightController;
+import dji.sdk.flightcontroller.LandingGear;
 import dji.sdk.flightcontroller.RTK;
 import dji.sdk.products.Aircraft;
 import dji.sdk.sdkmanager.DJISDKManager;
@@ -184,6 +185,22 @@ public class MyFlightController {
 
         controller.startIMUCalibration(index,callback);
     }
+
+
+
+    //=========================Sub Components=======================
+    //=========================子部件================================
+
+
+    //Landing Gear object. For products with movable landing gear only.
+    //获取起落架对象
+    LandingGear getLandingGear(){
+        if (controller == null)
+            return null;
+
+        return controller.getLandingGear();
+    }
+
 
 
 }
