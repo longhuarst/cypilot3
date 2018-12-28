@@ -223,4 +223,11 @@ public class MyFlightController {
     }
 
 
+    //Returns if the Onboard SDK feature is available on the connected product.
+    //返回连接的产品是否支持onboardSDK
+    boolean isOnboardSDKDeviceAvailable(){
+        if (controller == null)
+            return false;
+        return controller.isOnboardSDKDeviceAvailable();
+    }
 }
