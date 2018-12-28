@@ -1,5 +1,6 @@
 package cyfly.com.dji.cypilot3.MyAPI;
 
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -173,7 +174,16 @@ public class MyFlightController {
         controller.startIMUCalibration(callback);
     }
 
+    //Starts the calibration for IMU with a specific ID. Keep the aircraft stationary and horizontal during calibration, which will take 5 to 10 minutes. The completion block will be called once the calibration is started. Use the onUpdate method to check the execution status of the IMU calibration.
+    //开始校准某个特定ID的惯性测量单元
+    void startIMUCalibration(@IntRange(from = 0, to = 2) int index,
+                             @Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null){
+            return ;
+        }
 
+        controller.startIMUCalibration(index,callback);
+    }
 
 
 }
