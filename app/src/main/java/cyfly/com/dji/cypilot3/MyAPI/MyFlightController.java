@@ -3,6 +3,7 @@ package cyfly.com.dji.cypilot3.MyAPI;
 import android.support.annotation.NonNull;
 
 import dji.common.flightcontroller.FlightControllerState;
+import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
 import dji.common.flightcontroller.imu.IMUState;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.FlightController;
@@ -43,6 +44,8 @@ public class MyFlightController {
 
         controller.setIMUStateCallback(IMUStateCallback);
 
+        controller.setASBInformationCallback(AirSenseSystemInformationCallback);
+
         return controller;
     }
 
@@ -72,6 +75,16 @@ public class MyFlightController {
         }
     };
 
+
+    //Sets the AirSenseSystemInformation callback, which will receive the AirSenseSystemInformation.
+    //飞机传感器系统信息
+    AirSenseSystemInformation.Callback AirSenseSystemInformationCallback = new AirSenseSystemInformation.Callback(){
+
+        @Override
+        public void onUpdate(@NonNull AirSenseSystemInformation airSenseSystemInformation) {
+
+        }
+    };
 
 
 }
