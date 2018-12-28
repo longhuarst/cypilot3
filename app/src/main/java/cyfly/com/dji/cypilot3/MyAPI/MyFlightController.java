@@ -202,5 +202,17 @@ public class MyFlightController {
     }
 
 
+    //true if landing gear is supported for the connected aircraft.
+    //如果连接的飞机支持起落架则返回真
+    boolean isLandingGearMovable(){
+        if (controller == null)
+            return false;
+
+        return controller.isLandingGearMovable();
+    }
+
+
+
+
 
 }
