@@ -164,6 +164,15 @@ public class MyFlightController {
 
 
 
+    //Starts IMU calibration. For aircraft with multiple IMUs, this method will start the calibration of all IMUs. Keep the aircraft stationary and horizontal during calibration, which will take 5 to 10 minutes. The completion block will be called once the calibration is started. Use the onUpdate method to check the execution status of the IMU calibration.
+    //开始惯性测量单元校准
+    void startIMUCalibration(@Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null)
+            return;
+
+        controller.startIMUCalibration(callback);
+    }
+
 
 
 
