@@ -10,6 +10,7 @@ import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
 import dji.common.flightcontroller.imu.IMUState;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseProduct;
+import dji.sdk.flightcontroller.AccessLocker;
 import dji.sdk.flightcontroller.Compass;
 import dji.sdk.flightcontroller.FlightController;
 import dji.sdk.flightcontroller.LandingGear;
@@ -242,4 +243,22 @@ public class MyFlightController {
             return ;
         controller.sendDataToOnboardSDKDevice(data,callback);
     }
+
+
+
+
+    //============================Flight Assistance========================
+    //============================Flight Assistance========================
+
+
+    //Gets the instance of the access locker. It is used to encapsulate the access protection features on the aircraft.
+    //获取访问锁定的是实例
+    AccessLocker getAccessLocker(){
+        if (controller == null)
+            return null;
+
+        return controller.getAccessLocker();
+
+    }
+
 }
