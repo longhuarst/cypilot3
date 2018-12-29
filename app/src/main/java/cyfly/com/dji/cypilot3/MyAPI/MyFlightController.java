@@ -261,4 +261,13 @@ public class MyFlightController {
 
     }
 
+
+    //true if the product supports IntelligentFlightAssistant.
+    //如果产品支持IntelligentFlightAssistant 则返回真
+    boolean isFlightAssistantSupported(){
+        if (controller == null)
+            return false;
+        return controller.isFlightAssistantSupported();
+    }
+
 }
