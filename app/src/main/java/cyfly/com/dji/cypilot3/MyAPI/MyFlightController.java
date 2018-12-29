@@ -12,6 +12,7 @@ import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.AccessLocker;
 import dji.sdk.flightcontroller.Compass;
+import dji.sdk.flightcontroller.FlightAssistant;
 import dji.sdk.flightcontroller.FlightController;
 import dji.sdk.flightcontroller.LandingGear;
 import dji.sdk.flightcontroller.RTK;
@@ -269,5 +270,16 @@ public class MyFlightController {
             return false;
         return controller.isFlightAssistantSupported();
     }
+
+
+    //Intelligent flight assistant.
+    @Nullable
+    FlightAssistant getFlightAssistant(){
+        if (controller == null)
+            return null;
+        return controller.getFlightAssistant();
+    }
+
+
 
 }
