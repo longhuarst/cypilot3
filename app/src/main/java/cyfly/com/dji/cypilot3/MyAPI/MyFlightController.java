@@ -340,6 +340,18 @@ public class MyFlightController {
 
         controller.setCinematicModeEnabled(enabled,callback);
     }
+
+
+
+
+    //Gets cinematic mode status (enabled/disabled). It's only supported by Mavic Pro, Spark, Mavic 2 Zoom and Mavic 2 Pro.
+    //获取电影模式状态
+    void getCinematicModeEnabled(@NonNull CommonCallbacks.CompletionCallbackWith<Boolean> callback){
+        if (controller == null)
+            return;
+
+        controller.getCinematicModeEnabled(callback);
+    }
 }
 
 
