@@ -315,4 +315,21 @@ public class MyFlightController {
 
         controller.setTripodModeEnabled(enabled,callback);
     }
+
+
+
+    //Gets tripod mode status (enabled/disabled).
+    //获取三脚架模式状态
+    void getTripodModeEnabled(@NonNull CommonCallbacks.CompletionCallbackWith<Boolean> callback){
+
+        if (controller == null)
+            return;
+
+        controller.getTripodModeEnabled(callback);
+
+    }
 }
+
+
+
+
