@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.Size;
 
 import dji.common.flightcontroller.FlightControllerState;
+import dji.common.flightcontroller.FlightOrientationMode;
 import dji.common.flightcontroller.adsb.AirSenseSystemInformation;
 import dji.common.flightcontroller.imu.IMUState;
 import dji.common.util.CommonCallbacks;
@@ -278,6 +279,18 @@ public class MyFlightController {
         if (controller == null)
             return null;
         return controller.getFlightAssistant();
+    }
+
+
+
+
+    //Sets the aircraft flight orientation relative to the Aircraft Heading, Course Lock, or Home Lock. See the Flight Controller User Guide for more information about flight orientation.
+    void setFlightOrientationMode(@NonNull FlightOrientationMode type,
+                                  @Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null)
+            return;
+
+        controller.setFlightOrientationMode(type,callback);
     }
 
 
