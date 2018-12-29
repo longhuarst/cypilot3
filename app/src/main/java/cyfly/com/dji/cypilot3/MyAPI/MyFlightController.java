@@ -306,5 +306,13 @@ public class MyFlightController {
     }
 
 
+    //Enables/disables tripod mode. Tripod Mode drops the aircraft's maximum speed to 2.2mph (3.6kph), and significantly reduces the control stick sensitivity of the remote controller to give the user the precision needed for accurate framing. When tripod mode is enabled, missions, terrain follow mode, course lock, and home lock are not allowed. Tripod mode is not allowed if the aircraft is running a mission. If GPS or vision positioning aren't available, tripod mode cannot be enabled. If the GPS and/or the vision system is providing the flight controller with velocity information, the aircraft will be able to automatically compensate for wind. If however, position information is not available, manual intervention will be required. User should beware that any manual compensation will be limited due to the reduced maximum velocity and sensitivity. If GPS and vision position become unavailable while in tripod mode, it is advisable to alert the user and disable Tripod Mode.
+    //开启/关闭三脚架模式
+    void setTripodModeEnabled(boolean enabled,
+                              @Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null)
+            return;
 
+        controller.setTripodModeEnabled(enabled,callback);
+    }
 }
