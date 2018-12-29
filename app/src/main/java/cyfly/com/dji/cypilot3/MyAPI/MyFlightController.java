@@ -328,6 +328,18 @@ public class MyFlightController {
         controller.getTripodModeEnabled(callback);
 
     }
+
+
+
+    //Enables/disables cinematic mode. In Cinematic Mode, you can shoot more stable and smooth photos and videos. Aircraft yaw speed will be lower and braking distance will be longer. It's only supported by Mavic Pro, Spark, Mavic 2 Zoom and Mavic 2 Pro.
+    //设置电影模式开启
+    void setCinematicModeEnabled(boolean enabled,
+                                 @Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null)
+            return;
+
+        controller.setCinematicModeEnabled(enabled,callback);
+    }
 }
 
 
