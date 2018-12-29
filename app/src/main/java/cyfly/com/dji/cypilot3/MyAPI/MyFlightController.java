@@ -295,4 +295,16 @@ public class MyFlightController {
 
 
 
+    //Locks the current heading of the aircraft as the Course Lock. Used when Flight Orientation Mode is COURSE_LOCK.
+    //锁定当前飞机的航向
+    void lockCourseUsingCurrentHeading(@Nullable CommonCallbacks.CompletionCallback callback){
+        if (controller == null)
+            return;
+
+        controller.lockCourseUsingCurrentHeading(callback);
+
+    }
+
+
+
 }
