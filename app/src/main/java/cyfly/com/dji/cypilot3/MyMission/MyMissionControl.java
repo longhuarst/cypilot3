@@ -267,4 +267,31 @@ public class MyMissionControl {
     }
 
 
+
+
+    //Resume element and Timeline execution.
+    void resumeTimeline(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return ;
+
+        control.resumeTimeline();
+    }
+
+
+    //Stops the execution of the Timeline, resets the marker index to 0. Release thread resources of timeline.
+    void stopTimeline(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return ;
+
+        control.stopTimeline();
+    }
+
+
+
+
+
 }
