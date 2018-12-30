@@ -355,6 +355,18 @@ public class MyMissionControl {
 
 
 
+    //FIXME! Listener IS NOT EXIST???? 不存在的监听器？？？
+//    void addListener(Listener listener){
+//
+//
+//    }
 
+
+
+    //FIXME! Listener IS NOT EXIST???? 不存在的监听器？？？
+//    void removeListener(Listener listener){
+//
+//
+//    }
 
 }
