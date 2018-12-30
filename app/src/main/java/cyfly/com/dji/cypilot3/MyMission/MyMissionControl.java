@@ -329,4 +329,15 @@ public class MyMissionControl {
     }
 
 
+
+    //true if Timeline is paused
+    boolean isTimelinePaused(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return false;
+
+        return control.isTimelinePaused();
+    }
+
 }
