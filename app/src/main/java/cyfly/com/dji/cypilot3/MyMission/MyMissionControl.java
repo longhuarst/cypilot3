@@ -340,4 +340,21 @@ public class MyMissionControl {
         return control.isTimelinePaused();
     }
 
+
+
+    //The current element that is running in the Timeline. If the Timeline is not running, then this is null.
+    @Nullable
+    TimelineElement getRunningElement(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return null;
+
+        return control.getRunningElement();
+    }
+
+
+
+
+
 }
