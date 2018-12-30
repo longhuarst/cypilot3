@@ -369,4 +369,18 @@ public class MyMissionControl {
 //
 //    }
 
+
+    //Removes all listeners from the Timeline events listeners pool.
+    void removeAllListeners(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return;
+
+        control.removeAllListeners();;
+    }
+
+
+
+
 }
