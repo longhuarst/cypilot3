@@ -305,4 +305,28 @@ public class MyMissionControl {
 
 
 
+    //Tells the index in the timeline array that marks where the timeline is currently at. Changing this value will reposition where the timeline will resume/start work.
+    int getCurrentTimelineMarker(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return 0;
+
+        return control.getCurrentTimelineMarker();
+
+    }
+
+
+
+    //Sets the element index within the Timeline to start execution. This value can be set only when a Timeline is stopped (not executing or paused).
+    void setCurrentTimelineMarker(int currentTimelineMaker){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return ;
+
+        control.setCurrentTimelineMarker(currentTimelineMaker);
+    }
+
+
 }
