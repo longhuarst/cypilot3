@@ -293,5 +293,16 @@ public class MyMissionControl {
 
 
 
+    //true if the Timeline is running.
+    boolean isTimelineRunning(){
+        if (control == null)
+            getMissionControl();
+        if (control == null)
+            return false;
+
+        return control.isTimelineRunning();
+    }
+
+
 
 }
