@@ -30,6 +30,8 @@ import com.dji.mapkit.core.models.DJILatLng;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import dji.common.error.DJIError;
@@ -37,6 +39,7 @@ import dji.common.error.DJISDKError;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseComponent;
 import dji.sdk.base.BaseProduct;
+import dji.sdk.flightcontroller.FlightController;
 import dji.sdk.sdkmanager.DJISDKManager;
 import dji.ux.widget.MapWidget;
 
@@ -151,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
 
         //打印SDK版本号
         Log.e("cypilot","SDK Version :"+DJISDKManager.getInstance().getSDKVersion().toString());
+
+
+        //请求数据的定时器
+        flightControllerInit();
 
 
 
@@ -463,6 +470,24 @@ public class MainActivity extends AppCompatActivity {
 //    };
 
 
+
+
+    //实时获取飞机数据
+    Timer flightControllerTimer = null;//定时器
+    BaseProduct product = null;
+    FlightController controller = null;
+
+
+
+    private void flightControllerInit(){
+        flightControllerTimer = new Timer();
+        flightControllerTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+            }
+        },1000);
+    }
 
 
 }
