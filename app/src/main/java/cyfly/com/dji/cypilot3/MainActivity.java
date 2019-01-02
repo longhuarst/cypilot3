@@ -490,14 +490,13 @@ public class MainActivity extends AppCompatActivity {
                 product = DJISDKManager.getInstance().getProduct();
 
                 if (product != null){
+                    controller = ((Aircraft)product).getFlightController();
 
+                    if (controller != null){
+
+                    }
                 }
 
-                //
-//                controller = ((Aircraft)product).getFlightController();
-//
-//                if (controller == null)
-//                    return;
 
                 Log.e("cypilot3","timer...");
                 //Toast.makeText(MainActivity,"timer",Toast.LENGTH_LONG).show();
