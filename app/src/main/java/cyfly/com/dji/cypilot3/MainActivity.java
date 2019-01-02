@@ -40,6 +40,7 @@ import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseComponent;
 import dji.sdk.base.BaseProduct;
 import dji.sdk.flightcontroller.FlightController;
+import dji.sdk.products.Aircraft;
 import dji.sdk.sdkmanager.DJISDKManager;
 import dji.ux.widget.MapWidget;
 
@@ -484,6 +485,16 @@ public class MainActivity extends AppCompatActivity {
         flightControllerTimer.schedule(new TimerTask() {
             @Override
             public void run() {
+
+//                product = DJISDKManager.getInstance().getProduct();
+//
+//                controller = ((Aircraft)product).getFlightController();
+//
+//                if (controller == null)
+//                    return;
+
+                Log.e("cypilot3","timer...");
+                //Toast.makeText(MainActivity,"timer",Toast.LENGTH_LONG).show();
 
             }
         },1000);
