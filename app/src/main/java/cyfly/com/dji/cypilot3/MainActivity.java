@@ -482,6 +482,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void flightControllerInit(){
         flightControllerTimer = new Timer();
+        Log.e("cypilot3","timer start");
         flightControllerTimer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -496,8 +497,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("cypilot3","timer...");
                 //Toast.makeText(MainActivity,"timer",Toast.LENGTH_LONG).show();
 
+                flightControllerInit();
             }
-        },1000);
+        },6000);
+        Log.e("cypilot3","timer complete");
     }
 
 
