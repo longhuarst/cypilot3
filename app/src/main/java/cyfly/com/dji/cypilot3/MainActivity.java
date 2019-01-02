@@ -496,8 +496,10 @@ public class MainActivity extends AppCompatActivity {
 
                         int compassCount = controller.getCompassCount();//获取罗盘个数
 
+                        float heading = controller.getCompass().getHeading();
 
                         Log.e("cypilot3","compassCounter = "+compassCount);
+                        Log.e("cypilot3","heading = "+heading);
                     }
                 }
 
