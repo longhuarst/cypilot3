@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //请求数据的定时器
-        //flightControllerInit();
+        flightControllerInit();
 
 
 
