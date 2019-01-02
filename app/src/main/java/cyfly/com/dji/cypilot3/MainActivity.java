@@ -487,8 +487,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-//                product = DJISDKManager.getInstance().getProduct();
-//
+                product = DJISDKManager.getInstance().getProduct();
+
+                if (product != null){
+
+                }
+
+                //
 //                controller = ((Aircraft)product).getFlightController();
 //
 //                if (controller == null)
