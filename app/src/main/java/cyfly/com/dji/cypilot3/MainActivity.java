@@ -494,6 +494,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if (controller != null){
 
+                        int compassCount = controller.getCompassCount();//获取罗盘个数
+
+
+                        Log.e("cypilot3","compassCounter = "+compassCount);
                     }
                 }
 
