@@ -126,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
         mapWidget.initAMap(new MapWidget.OnMapReadyListener() {
             @Override
             public void onMapReady(@NonNull DJIMap map) {
+
+
+
+
                 map.setOnMapClickListener(new DJIMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(DJILatLng latLng) {
@@ -135,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mapWidget.onCreate(savedInstanceState);
+
+
+
 
         parentView = (ViewGroup) findViewById(R.id.root_view);
 
@@ -160,6 +167,9 @@ public class MainActivity extends AppCompatActivity {
         //请求数据的定时器
         flightControllerInit();
 
+
+
+        //initAMap(savedInstanceState);//初始化高德地图
 
 
 
@@ -535,6 +545,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     //地图相关操作
+    //private MapWidget mapWidget = null;
+    private int mapProvider;
+    public static final String MAP_PROVIDER = "MapProvider";
 
     void SetHomeBitmap(){
 
@@ -543,10 +556,63 @@ public class MainActivity extends AppCompatActivity {
 
 
     //初始化高德地图
-    void initAMap(){
+    void initAMap(@Nullable Bundle savedInstanceState){
+        mapWidget = findViewById(R.id.map_widget);
+
+        MapWidget.OnMapReadyListener onMapReadyListener = new MapWidget.OnMapReadyListener() {
+            @Override
+            public void onMapReady(@NonNull DJIMap djiMap) {
+                djiMap.setMapType(DJIMap.MapType.Normal);//设置地图类型为正常
+            }
+        };
+        Intent intent = getIntent();
+
+        mapWidget.initAMap(onMapReadyListener);//直接设定为高德地图
+//        mapProvider = intent.getIntExtra(MAP_PROVIDER,0);
+//        switch (mapProvider){
+//            case 0:
+//                mapWidget.initHereMap(onMapReadyListener);
+//                break;
+//            case 1:
+//                mapWidget.initGoogleMap(onMapReadyListener);
+//                break;
+//            case 2:
+//                mapWidget.initAMap(onMapReadyListener);
+//                break;
+//            default:
+//                break;
+//        }
+        mapWidget.onCreate(savedInstanceState);
+
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+
+    //自动飞行
+
+
+    //起飞
+    void takeoff(){
+        //if ()
+    }
 
 
 
