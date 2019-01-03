@@ -191,6 +191,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
     private class ResizeAnimation extends Animation {
 
         private View mView;
