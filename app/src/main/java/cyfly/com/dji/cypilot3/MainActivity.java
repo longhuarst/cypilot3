@@ -37,6 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import dji.common.error.DJIError;
 import dji.common.error.DJISDKError;
+import dji.common.flightcontroller.ConnectionFailSafeBehavior;
 import dji.common.model.LocationCoordinate2D;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseComponent;
@@ -881,5 +882,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
+    void setConnectionFailSafeBehavior(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+    //          HOVER(0),
+        //    LANDING(1),
+        //    GO_HOME(2),
+        //    UNKNOWN(255);
+        ConnectionFailSafeBehavior behavior;
+
+        //controller.getConnectionFailSafeBehavior();
+
+//        controller.setConnectionFailSafeBehavior(behavior, new CommonCallbacks.CompletionCallback() {
+//            @Override
+//            public void onResult(DJIError djiError) {
+//
+//            }
+//        });
+    }
 
 }
