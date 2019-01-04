@@ -893,16 +893,19 @@ public class MainActivity extends AppCompatActivity {
         //    LANDING(1),
         //    GO_HOME(2),
         //    UNKNOWN(255);
-        ConnectionFailSafeBehavior behavior;
+        //ConnectionFailSafeBehavior behavior;
 
         //controller.getConnectionFailSafeBehavior();
 
-//        controller.setConnectionFailSafeBehavior(behavior, new CommonCallbacks.CompletionCallback() {
-//            @Override
-//            public void onResult(DJIError djiError) {
-//
-//            }
-//        });
+        if (cyConnectionFailSafeBehavior == null)
+            return ;
+
+        controller.setConnectionFailSafeBehavior(cyConnectionFailSafeBehavior, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
     }
 
 
