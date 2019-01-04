@@ -677,6 +677,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //开始降落
+    void startLanding(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //Starts auto-landing of the aircraft. Returns completion block once aircraft begins to descend for auto-land.
+        //开始 自动降落
+        //回调函数将会在开始自动降落时调用
+        controller.startLanding(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+
+
+
+
 
 
 }
