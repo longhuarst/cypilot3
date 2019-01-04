@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -36,6 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import dji.common.error.DJIError;
 import dji.common.error.DJISDKError;
+import dji.common.model.LocationCoordinate2D;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseComponent;
 import dji.sdk.base.BaseProduct;
@@ -693,11 +695,191 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //退出降落
+    void cancelLanding(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+
+        //Stops auto-landing of the aircraft. If called before startLanding is complete, then the auto landing will be canceled (startLanding completion block will return an error) and the aircraft will hover at its current location.
+        //停止自动降落 -- 需要在 startLanding 结束之前调用
+        //然后自动降落将会被退出,startLanding 的回调函数将会返回错误
+        //飞机将会悬停在当前位置
+        controller.cancelLanding(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+    //确认降落
+    void confirmLanding(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+
+        //Confirms continuation of landing action. When the clearance between the aircraft and the ground is less than 0.3m, the aircraft will pause landing and wait for user's confirmation. Can use isLandingConfirmationNeeded in FlightControllerState to check if confirmation is needed. It is supported by flight controller firmware 3.2.0.0 and above.
+        //确认降落行动的延续性，当飞机和地面的距离小于 30cm，飞机将会暂停降落并等待用户确认，
+        // 可以检查 FlightControllerState 中的 isLandingConfirmationNeeded 参数，得知是否需要确认
+        // 仅支持飞行控制器固件版本 3.2.0.0 和以上.
+        controller.confirmLanding(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+    //返回Home点
+    void startGoHome(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //The aircraft will start to go home. The completion callback will return execution result once this method is invoked.
+        //飞机将会开始返回 Home 点，
+        // 当该方法被调用，完成回调函数将会立刻返回结果
+        controller.startGoHome(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+    //退出返航
+    void cancelGoHome(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //The aircraft will stop going home and will hover in place.
+        //飞机将会退出返航操作,并且悬停
+        controller.cancelGoHome(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
 
 
 
+    //设置返航点【使用经纬度】
+    void setHomeLocation(double latitude, double longitude){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //第一参数 纬度  第二参数 经度
+        LocationCoordinate2D homeLocation = new LocationCoordinate2D(latitude, longitude);
+
+        //Sets the home location of the aircraft. The home location is where the aircraft returns when commanded by startGoHome, when its signal is lost or when the battery is below the lowBatteryWarning threshold. The user should be careful setting a new home point location, as sometimes the product will not be under user control when returning home. A home location is valid if it is within 30m of one of the following:
+        //
+        //initial take-off location
+        //aircraft's current location
+        //current mobile location with at least kCLLocationAccuracyNearestTenMeters accuracy level
+        //current remote controller's location as shown by RC GPS.
 
 
+        //设置飞机的返航点,（返航点是 startGoHome 命令，飞机返回的位置），
+        //  当飞机信号丢失、电池电量低于低电量警告阈值时返回的地点。
+        //  用户需要仔细设置一个新的返航点，有时候当飞机在返航时可能会不受用户控制
+        //  一个有效的返航点应该是一下其中之一的30M内
+        //  1. 初始的起飞点
+        //  2. 飞机当前的位置
+        //  3. 当前手机的位置（kCLLocationAccuracyNearestTenMeters 既当前定位精度在10M以内）
+        //  4. RC-GPS显示的当前遥控器的位置
+        controller.setHomeLocation(homeLocation, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+    //设置返航点为飞机的当前位置
+    void setHomeLocationUsingAircraftCurrentLocation(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //Sets the home location of the aircraft to the current location of the aircraft. See setHomeLocation for details on home point use.
+        //设置返航点为飞机的当前位置
+        controller.setHomeLocationUsingAircraftCurrentLocation(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+    //获取返航点
+    void getHomeLocation(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //Gets the home point of the aircraft.
+        //获取当前飞机的返航点
+        controller.getHomeLocation(new CommonCallbacks.CompletionCallbackWith<LocationCoordinate2D>() {
+            @Override
+            public void onSuccess(LocationCoordinate2D locationCoordinate2D) {
+                //成功
+                double latitude = locationCoordinate2D.getLatitude();//获取纬度
+                double longitude = locationCoordinate2D.getLongitude();//获取经度
+
+                Log.e("cypilot3","current home[latitude|longitude] = ["+latitude+"|"+longitude+"]");
+
+            }
+
+            @Override
+            public void onFailure(DJIError djiError) {
+                //失败
+
+            }
+        });
+    }
+
+
+
+    //设置返航点高度【单位 米】
+    void setGoHomeHeightInMeters(@IntRange(from = 20, to = 500) int height){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //Sets the minimum altitude, relative to where the aircraft took off, at which the aircraft must be before going home. This can be useful when the user foresees obstacles in the aircraft's flight path. If the aircraft's current altitude is higher than the minimum go home altitude, it will go home at its current altitude. The valid range for the altitude is from 20m to 500m.
+        //设置最小高度，相对于飞机起飞高度，飞机在返航前必须达到的高度，当飞机路径当中有障碍物时非常有用，
+        // 如果当前飞机的高度比最小返航高度高，它将会在当前高度返航，
+        // 高度有效范围为 20 米 ～ 500 米
+        controller.setGoHomeHeightInMeters(height, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+    //获取返航高度
+    void getGoHomeHeightInMeters(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        //Gets the minimum altitude (relative to the take-off location in meters) at which the aircraft must be before going home.
+        //获取最小返航高度（相对于起飞高度）
+        controller.getGoHomeHeightInMeters(new CommonCallbacks.CompletionCallbackWith<Integer>() {
+            @Override
+            public void onSuccess(Integer integer) {
+                int height = integer.intValue();
+                Log.e("cypilot3","GoHomeHeightInMeters = "+height);
+            }
+
+            @Override
+            public void onFailure(DJIError djiError) {
+
+            }
+        });
+    }
 
 
 }
