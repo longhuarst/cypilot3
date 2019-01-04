@@ -883,6 +883,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    ConnectionFailSafeBehavior cyConnectionFailSafeBehavior = null;
 
     void setConnectionFailSafeBehavior(){
         if (updateFlightContollerInstance() == false)
@@ -904,4 +905,22 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
+
+
+    void getConnectionFailSafeBehavior(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.getConnectionFailSafeBehavior(new CommonCallbacks.CompletionCallbackWith<ConnectionFailSafeBehavior>() {
+            @Override
+            public void onSuccess(ConnectionFailSafeBehavior connectionFailSafeBehavior) {
+                cyConnectionFailSafeBehavior = connectionFailSafeBehavior;
+            }
+
+            @Override
+            public void onFailure(DJIError djiError) {
+
+            }
+        });
+    }
 }
