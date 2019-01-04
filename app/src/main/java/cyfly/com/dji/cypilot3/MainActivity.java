@@ -636,6 +636,25 @@ public class MainActivity extends AppCompatActivity {
     //起飞
     void takeoff(){
         //if ()
+
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+
+        //Starts aircraft takeoff. Takeoff is considered complete when the aircraft is hovering 1.2 meters (4 feet) above the ground. Completion block is called when aircraft crosses 0.5 meters (1.6 feet). If the motors are already on, this command cannot be executed.
+        //开始起飞
+        //当飞机悬停在相对地面 1.2 米处则被认为是起飞完成
+        //当穿越0.5米时，Completion block将会被调用
+        //如果电机已经在旋转，则这个命令将不会被执行
+        controller.startTakeoff(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+                //起飞结果
+                Log.e("cypilot3","takeoff() --> result = "+djiError.toString());
+            }
+        });
+
+
     }
 
 
