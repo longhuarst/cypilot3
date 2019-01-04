@@ -653,7 +653,26 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("cypilot3","takeoff() --> result = "+djiError.toString());
             }
         });
+    }
 
+
+
+    //退出起飞
+    void cancelTakeoff(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+
+        //Stops aircraft takeoff. If called before startTakeoff is complete, the aircraft will cancel takeoff (startTakeoff completion block will return an error) and hover at the current height.
+        //停止起飞,需要在起飞结束之前调用
+        //飞机将会退出起飞
+        //startTakeoff 的完成回调函数将会返回出错 并且飞机悬停在当前高度
+        controller.cancelTakeoff(new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
 
     }
 
