@@ -501,6 +501,27 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //更新飞行控制对象
+    boolean updateFlightContollerInstance(){
+        if (product == null){
+            product = DJISDKManager.getInstance().getProduct();
+        }
+        if (product !=null){
+            if (controller == null){
+                controller = ((Aircraft)product).getFlightController();
+            }
+            if (controller != null){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+
     private void flightControllerInit(){
         flightControllerTimer = new Timer();
         Log.e("cypilot3","timer start");
