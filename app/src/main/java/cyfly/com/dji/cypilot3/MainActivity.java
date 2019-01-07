@@ -941,4 +941,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+    //Gets the low battery warning threshold as a percentage.
+    //获取低电量电池警告的阈值百分比
+    void getLowBatteryWarningThreshold(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.getLowBatteryWarningThreshold(new CommonCallbacks.CompletionCallbackWith<Integer>() {
+            @Override
+            public void onSuccess(Integer integer) {
+
+            }
+
+            @Override
+            public void onFailure(DJIError djiError) {
+
+            }
+        });
+    }
 }
