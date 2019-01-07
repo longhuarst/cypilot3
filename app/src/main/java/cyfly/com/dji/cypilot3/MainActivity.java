@@ -962,4 +962,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+    //Sets the serious low battery warning threshold as a percentage. The minimum value is 10. The maximum value is value from getLowBatteryWarningThreshold minus 5.
+    //设置严格的低电量阈值百分比
+    void setSeriousLowBatteryWarningThreshold(@IntRange(from = 10, to = 45) int percent){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.setSeriousLowBatteryWarningThreshold(percent, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
 }
