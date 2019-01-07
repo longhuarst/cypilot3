@@ -926,4 +926,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    //Sets the low battery warning threshold as a percentage. The percentage must be in the range of [15, 50].
+    //设置低电量警告的阈值[百分比，15~50%]
+    void setLowBatteryWarningThreshold(@IntRange(from = 15, to = 50) int percent){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.setLowBatteryWarningThreshold(percent, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
 }
