@@ -997,4 +997,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    //Enables/disables Smart Return-To-Home (RTH) feature. When it is enabled, aircraft will request to go home when remaining battery is only enough for completing the go-home action.
+    //打开/关闭 智能返航
+    void setSmartReturnToHomeEnabled(boolean enabled){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.setSmartReturnToHomeEnabled(enabled, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
 }
