@@ -978,4 +978,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    //获取严格的低电量阈值百分比
+    void getSeriousLowBatteryWarningThreshold(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.getLowBatteryWarningThreshold(new CommonCallbacks.CompletionCallbackWith<Integer>() {
+            @Override
+            public void onSuccess(Integer integer) {
+
+            }
+
+            @Override
+            public void onFailure(DJIError djiError) {
+
+            }
+        });
+    }
 }
