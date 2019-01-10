@@ -1032,4 +1032,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    //Confirms or cancels the Smart Return-To-Home (RTH) request. When Smart RTH is enabled, the aircraft will request to go home when the battery is only enough for going home. Before executing the go-home action, the aircraft will wait for the confirmation from users with 10 seconds count-down. If the "confirmed" parameter is false, the request is canceled and the aircraft will not execute go-home action. Otherwise, go-home action will start. Smart RTH will be triggered only once during the same flight. Flight controller with firmware version lower than 3.0.0.0 does not support confirming the Smart RTH request. User can either cancel the request or wait for the countdown to start go-home action.
+    void confirmSmartReturnToHomeRequest(boolean confirmed){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.confirmSmartReturnToHomeRequest(confirmed, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
 }
