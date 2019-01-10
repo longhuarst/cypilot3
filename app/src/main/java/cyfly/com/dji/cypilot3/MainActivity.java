@@ -1046,4 +1046,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+    //========================  Flight Mode ==============================
+
+
+
 }
