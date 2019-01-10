@@ -38,6 +38,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import dji.common.error.DJIError;
 import dji.common.error.DJISDKError;
 import dji.common.flightcontroller.ConnectionFailSafeBehavior;
+import dji.common.flightcontroller.RemoteControllerFlightMode;
 import dji.common.model.LocationCoordinate2D;
 import dji.common.util.CommonCallbacks;
 import dji.sdk.base.BaseComponent;
@@ -1052,6 +1053,24 @@ public class MainActivity extends AppCompatActivity {
 
     //========================  Flight Mode ==============================
 
+    //Gets the mapping between the flight modes and the flight mode switch positions on the remote controller. Elements 0, 1, and 2 of the returned array map to POSITION_ONE, POSITION_TWO, and POSITION_THREE of the getFlightModeSwitch. The value of each Enum item represents the corresponding value of the RemoteControllerFlightMode Enum representing the flight mode.
+    //The mapping is fixed for the Phantom series, Inspire series, Mavic Pro, and M100. For N3, A3, Matrice 600, and Matrice 600 Pro the mapping is firmware dependent. With firmware version 3.2.11.0 or above, the mapping can be customized in DJI Assistant 2.
+    //
+    void getRCSwitchFlightModeMapping(){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
 
+        controller.getRCSwitchFlightModeMapping(new CommonCallbacks.CompletionCallbackWith<RemoteControllerFlightMode[]>() {
+            @Override
+            public void onSuccess(RemoteControllerFlightMode[] remoteControllerFlightModes) {
+
+            }
+
+            @Override
+            public void onFailure(DJIError djiError) {
+
+            }
+        });
+    }
 
 }
