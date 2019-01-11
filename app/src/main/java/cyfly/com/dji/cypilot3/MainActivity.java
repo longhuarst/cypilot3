@@ -1073,4 +1073,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    //Enables/disables multiple-flight mode. When multiple-flight mode is enabled, user can change the aircraft's mode to P/F/A/S mode by toggling the switch on the remote controller. If it is disabled, the aircraft will be in P mode.
+    void setMultipleFlightModeEnabled(boolean enabled){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+        controller.setMultipleFlightModeEnabled(enabled, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+
+
+
+
 }
