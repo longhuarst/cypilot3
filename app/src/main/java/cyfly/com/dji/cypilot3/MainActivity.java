@@ -1109,4 +1109,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //Enables novice mode. When novice mode is enabled, the flight speed will become slower and less responsive handling. For Phantom 4 Pro, enabling novice mode will enable the infrared time-of-flight (TOF) sensors on the left and right.
+    void setNoviceModeEnabled(boolean enabled){
+        if (updateFlightContollerInstance() == false)
+            return; //没有获取到飞行控制器实例
+
+
+
+        controller.setNoviceModeEnabled(enabled, new CommonCallbacks.CompletionCallback() {
+            @Override
+            public void onResult(DJIError djiError) {
+
+            }
+        });
+    }
+
+
+
 }
